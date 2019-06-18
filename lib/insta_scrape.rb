@@ -1,5 +1,4 @@
 require "dependencies"
-require "pry"
 
 module InstaScrape
   extend Capybara::DSL
@@ -81,9 +80,9 @@ module InstaScrape
   #post iteration method
 
   def self.iterate_through_posts(include_meta_data:)
-    
+
     posts = all("article div div div a").collect do |post|
-      { 
+      {
         link: post["href"],
         image: post.find("img")["src"],
         text: post.find("img")["alt"]
